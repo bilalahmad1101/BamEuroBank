@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<<device-width>>, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/account-styles.css') }}">  
+    <title>Document</title>
+    <script src=""></script>
+</head>
+<body>
+    
+    <div id="account-box-div">
+        <div id="account-box-title">
+            <h1>{{ username }}'s Account</h1>
+        </div>
+        <div id = balance-p>
+            <p>Balance: {{ balance }}</p>
+        </div> 
+        <div id="account-transactions-table-div" >
+            <table>
+                <tr>
+                    <th>Sender</th>
+                    <th>Recipient</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+                {% for transaction in transactions %}
+                    <tr>
+                        <th>{{ transaction[0] }}</th> 
+                        <th>{{ transaction[1] }}</th>
+                        <th>{{ transaction[2] }}</th>
+                        <th>{{ transaction[3] }}</th>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <form action="/transfer/" method="Post" >
+            Send To: <input type="text" name="send_to_text">
+            Amount: <input type="number" name="amount_text">
+            <input type="submit" value="Send">
+            <input type="hidden" value={{username}} name="username">
+            <p>{{ status }}</p>
+            <a href="/">Logout</a>
+
+        </form>
+
+        
+    </div>
+</body>
+</html>

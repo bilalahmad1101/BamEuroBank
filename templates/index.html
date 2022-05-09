@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=<<device-width>>, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index-styles.css') }}">  
     <title>Document</title>
+    <script src=""></script>
 </head>
 <body>
     
+    <div id="login-box-div">
+        <div id="login-box-title">
+            <h1>Sign In</h1>
+            <form action =/login/ method="Post">
+                Username: <input id = "login_username" type="text" name="login_username">
+                Password: <input id = "login_password"type="password" name="login_password">
+                <input type="submit" value="Login">
+            </form>
+            <form action =/sign-up/ method="GET">
+                <input type="submit" value="Sign Up" name="login_btn">
+            </form>
+            {% if login_failed %}
+                <p>Incorrect Username or Password. Please try again.</p>
+            {% endif %}
+            
+        </div>
+        
+    </div>
 </body>
 </html>

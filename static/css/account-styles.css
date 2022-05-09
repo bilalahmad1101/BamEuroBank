@@ -1,0 +1,45 @@
+body{
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    overflow: hidden;
+}
+
+#account-box-title{
+    color:chartreuse;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+#account-box-div{
+    background-color: grey;
+    height: 1000px;
+    width: 500px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    outline-color: green;
+    outline-width: 100px;
+
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
