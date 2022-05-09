@@ -45,3 +45,33 @@ class BankDatabase():
             + AccountID + "', '" + BambEuroID + "');")
             self.cursor.commit()
         self.cursor.close()
+
+    def validate_user_exists(self, username):
+        self.start_connection()
+        #retrieves username if it exists
+        pulled_username = self.cursor.execute("SELECT UserName FROM User WHERE UserName ='" + username + "';").fetchall()
+        self.cursor.commit()
+        self.cursor.close()
+        #returns true if the results are not empty
+        if len(pulled_username) > 0:
+            return True
+        return False
+    
+    def validate_login_credentials(self, username, password):
+        self.start_connection()
+        #retrieves creds if record exists of given combination
+        pulled_creds = self.cursor.execute("SELECT UserName, UserPassword FROM User WHERE UserName ='" + username + "' AND UserPassword = '" + password + "';").fetchall()
+        self.cursor.commit()
+        self.cursor.close()
+        #returns true if the results are not empty
+        if len(pulled_creds) > 0:
+            return True
+        return False
+    
+    def retrieve_account_balance(self, username):
+        self.start_connection()
+        #Quries account for balance for given username
+        pulled_balance = self.cursor.execute("SELECT Balance FROM Account, User WHERE Account.UserID = User.UserID AND UserName ='" + username + "';").fetchall()[0][0]
+        self.cursor.commit()
+        self.cursor.close()
+        return pulled_balance
